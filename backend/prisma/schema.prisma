@@ -1,0 +1,48 @@
+
+generator client {
+  provider = "prisma-client"
+  output = "./generated"
+	engineType = "client"
+	runtime = "bun"
+}
+
+datasource db {
+  provider = "postgresql"
+
+}
+
+model User {
+  id            String   @id    @default(uuid())
+  email         String   @unique
+  provider      AuthProvider
+  name          String
+  conversations Conversation[]
+}
+
+model Conversation {
+  id        String    @id   @default(uuid())
+  title     String?
+  slug      String
+  userId    String
+  messages  Messages[]
+  user      User      @relation(fields: [userId], references: [id])
+}
+
+model Messages {
+  id              Int      @id   @default(autoincrement())
+  content         String
+  role            MessageRole
+  conversationId  String
+  createdAt       DateTime    @default(now())
+  conversation    Conversation  @relation(fields: [conversationId], references: [id])
+}
+
+enum AuthProvider {
+  Google
+  Github
+}
+
+enum MessageRole {
+  User
+  Assistant
+}

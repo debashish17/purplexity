@@ -1,0 +1,42 @@
+# dependencies
+**/node_modules
+
+# output
+**/out
+**/dist
+**/*.tgz
+
+# code coverage
+**/coverage
+**/*.lcov
+
+# logs
+**/logs
+**/*.log
+**/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# dotenv environment variable files
+**/.env
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+**/.env.local
+
+# caches
+**/.eslintcache
+**/.cache
+**/*.tsbuildinfo
+
+# IDEs
+**/.idea
+**/.vscode
+
+# Mac
+**/.DS_Store
+
+# Prisma client, generated on `bun install` (postinstall) from backend/prisma/schema.prisma
+backend/prisma/generated/
+
+# Local AI-assistant prompts and skills (not part of the app)
+.github/prompts/
+.github/skills/
